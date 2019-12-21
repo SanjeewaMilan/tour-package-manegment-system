@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li class=""><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
         </li>
         <li>
-          <a href="pages/mailbox/mailbox.html">
+          <a href="">
             <i class="fa fa-envelope"></i> <span>Reservation</span>
             <small class="label pull-right bg-yellow">12</small>
           </a>
@@ -73,6 +73,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li><a href=""><i class="fa fa-book"></i> <span>Employee Data</span></a></li>
         <li class="header">LABELS</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+
+        <li class="header">Admin</li>
+        <li class="treeview">
+          <a href="/auth">
+            <i class="fa fa-folder"></i> <span>Admin</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url();?>/auth"><i class="fa fa-circle-o"></i> Dashbord</a></li>
+            <li><a href="<?php echo base_url();?>/auth/create_user"><i class="fa fa-circle-o"></i> Create User</a></li>
+            <li><a href="<?php echo base_url();?>/auth/"><i class="fa fa-circle-o"></i> Login</a></li>
+          </ul>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
