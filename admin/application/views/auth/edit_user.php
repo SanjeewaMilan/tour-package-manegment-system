@@ -17,6 +17,7 @@
 
             <!-- Main content -->
       <section class="content">
+      
             <div class="row">
                   <div class="col-xs-12">
                         <div class="box">
@@ -33,6 +34,7 @@
 
                                                 <p>
                                                       <?php echo lang('edit_user_fname_label', 'first_name');?> <br />
+                                                    <!--  <input type="text" class="form-control" placeholder="First Name" name="first_name" value="<?php //echo $first_name['value'];?>"> -->
                                                       <?php echo form_input($first_name);?>
                                                 </p>
 

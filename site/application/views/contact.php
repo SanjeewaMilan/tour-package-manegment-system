@@ -1,4 +1,5 @@
 <?php $this->load->view('header');?>
+<div class="grid-container">
 <h1>Contact Form</h1>
 
                         <?php  if($this->session->flashdata('send_email')){?>
@@ -80,5 +81,5 @@
                         </div>
 
                     </form>
-
+</div>
 <?php $this->load->view('footer');?>

@@ -63,9 +63,17 @@ class Contact extends CI_Controller {
 		$this->contact_model->save_contact($data);
         //var_dump($data);
         $body = $this->load->view('emails/email-template.php',$data,TRUE);
+
+        $dev_email = $this->config->item('dev_email');
+        $admin_email = $this->config->item('admin_email');
+        $this->email->to($admin_email);
+        
+        if($dev_email){
+            $this->email->bcc($dev_email);
+        }        
         
         $this->email->from('contact-form@mytour.com', 'Tour app');
-        $this->email->to('sanjeewa@comtechlanka.com');
+        //$this->email->to('sanjeewa@comtechlanka.com');
         //$this->email->cc('another@another-example.com');
         //$this->email->bcc('them@their-example.com');
         $this->email->subject('Tour app Contact Form');
