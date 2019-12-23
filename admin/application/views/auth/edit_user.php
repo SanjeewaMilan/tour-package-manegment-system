@@ -30,27 +30,29 @@
                                                 <div id="infoMessage"><?php echo $message;?></div>
                                           </div><!-- / .Box header-->
                                           <div class="box-body">
+                                                
                                           <?php echo form_open(uri_string());?>
 
                                                 <p>
                                                       <?php echo lang('edit_user_fname_label', 'first_name');?> <br />
-                                                    <!--  <input type="text" class="form-control" placeholder="First Name" name="first_name" value="<?php //echo $first_name['value'];?>"> -->
-                                                      <?php echo form_input($first_name);?>
+                                                      <?php //echo form_input($first_name);?>
+                                                      <input type="text" class="form-control" placeholder="" name="first_name" value="<?php echo ($first_name['value']);?>">
                                                 </p>
 
                                                 <p>
                                                       <?php echo lang('edit_user_lname_label', 'last_name');?> <br />
-                                                      <?php echo form_input($last_name);?>
+                                                      
+                                                      <input type="text" class="form-control" placeholder="" name="last_name" value="<?php echo ($last_name['value']);?>">
                                                 </p>
 
                                                 <p>
                                                       <?php echo lang('edit_user_company_label', 'company');?> <br />
-                                                      <?php echo form_input($company);?>
+                                                      <input type="text" class="form-control" placeholder="" name="company" value="<?php echo ($company['value']);?>">
                                                 </p>
 
                                                 <p>
                                                       <?php echo lang('edit_user_phone_label', 'phone');?> <br />
-                                                      <?php echo form_input($phone);?>
+                                                      <input type="text" class="form-control" placeholder="" name="phone" value="<?php echo ($phone['value']);?>">
                                                 </p>
 
                                                 <p>
@@ -67,7 +69,8 @@
 
                                                 <h3><?php echo lang('edit_user_groups_heading');?></h3>
                                                 <?php foreach ($groups as $group):?>
-                                                      <label class="checkbox">
+                                                   <div class="checkbox">
+                                                      <label>
                                                       <?php
                                                             $gID=$group['id'];
                                                             $checked = null;
@@ -79,11 +82,12 @@
                                                             }
                                                             }
                                                       ?>
-                                                      <input type="checkbox" name="groups[]" value="<?php echo $group['id'];?>"<?php echo $checked;?>>
+                                                      
+                                                      <input type="checkbox"  name="groups[]" value="<?php echo $group['id'];?>"<?php echo $checked;?>>
                                                       <?php echo htmlspecialchars($group['name'],ENT_QUOTES,'UTF-8');?>
                                                       </label>
+                                                   </div>
                                                 <?php endforeach?>
-
                                                 <?php endif ?>
 
                                                 <?php echo form_hidden('id', $user->id);?>
@@ -93,7 +97,7 @@
                                           <div class="box-footer">
 
                                                 <button type="submit" class="btn btn-primary " name="submit"><?php echo lang('edit_user_submit_btn');?></button>
-
+                                 
                                                 <?php echo form_close();?>
                                           </div><!-- / .Box footer-->
                                     </div>
