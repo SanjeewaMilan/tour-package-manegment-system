@@ -32,12 +32,24 @@ class Comments extends CI_Controller {
 
         $comment_save = $this->comments_model->save_comment($data);
         if($comment_save){
-            $this->session->set_flashdata('add_comment', "Comment added!");
+            $this->session->set_flashdata('comment', "Comment added!");
 			redirect('contact/message/'.$id);
         }else{
-            $this->session->set_flashdata('add_comment', "Failed!");
+            $this->session->set_flashdata('comment', "Failed!");
 			redirect('contact/message/'.$id);
         }
 
     }
+
+    public function delete($id){
+        $delete_function = $this->comments_model->delete_comment($id);
+        if($delete_function){
+            $this->session->set_flashdata('comment', "Comment deleted!");
+			redirect($_SERVER['HTTP_REFERER']);
+        }else{
+            $this->session->set_flashdata('comment', "Failed!");
+			redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }    
 }
