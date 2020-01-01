@@ -28,10 +28,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="box-header with-border">
               <h3 class="box-title">Read Mail</h3>
 
-              <div class="box-tools pull-right">
+            <!--  <div class="box-tools pull-right">
                 <a href="#" class="btn btn-box-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-chevron-left"></i></a>
                 <a href="#" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
-              </div>
+              </div> -->
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
               <!-- /.mailbox-read-info -->
               <div class="mailbox-controls with-border text-center">
-                <div class="btn-group">
+                <!-- <div class="btn-group">
                   <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
                     <i class="fa fa-trash-o"></i></button>
                   <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
@@ -50,10 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Forward">
                     <i class="fa fa-share"></i></button>
                 </div>
-                <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Print">
                   <i class="fa fa-print"></i></button>
-              </div>
+              </div> -->
+              <!-- /.btn-group -->
               <!-- /.mailbox-controls -->
               <div class="mailbox-read-message">
                 <?php 
@@ -64,16 +64,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-              
-            </div>
-            <!-- /.box-footer -->
-            <div class="box-footer">
               <div class="pull-right">
-                <button type="button" class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
-                <button type="button" class="btn btn-default"><i class="fa fa-share"></i> Forward</button>
+                <!-- <button type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>-->
+                <a href="<?php echo base_url().'contact/delete_message/'.$contact_message[0]['contact_id']?>"class="btn btn-danger" onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash-o"></i> Delete</a>
               </div>
-              <button type="button" class="btn btn-default" onclick="location.href='<?php echo base_url().'contact/delete_message/'.$contact_message[0]['contact_id'] ?>';"><i class="fa fa-trash-o"></i> Delete</button>
-              <button type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
+              <!--reminder form -->
+              <form action="<?php echo base_url().'contact/add_reminder/'.$contact_message[0]['contact_id']?>" method="POST">
+              <?php $reminder_value = $contact_message[0]['co_reminder'];?>
+                <div class="col-sm-4 col-lg-3 <?php 
+                  if( $reminder_value =='Action not taken'){
+                    echo 'form-group has-error';
+                    }elseif($reminder_value =='Completed'){
+                    echo 'form-group has-success';
+                    }else{
+                    echo 'form-group has-warning';
+                    }?>">
+                  <select class="form-control" name='reminder'>
+                    <option value='Action not taken'>Action not taken</option>
+                    <option value='Completed' <?php if( $reminder_value ==='Completed'){echo 'selected';}?>>Completed</option>
+                    <option value='Follow Back' <?php if( $reminder_value ==='Follow Back'){echo ' selected';}?>>Follow Back</option>
+                    <option value='Comment added' <?php if( $reminder_value ==='Comment added'){echo 'selected';}?>>Comment added</option>
+                  </select >
+                </div>
+              <button type="submit" class="btn btn-primary"><i class="fa fa-clock-o"></i> Change Status</button>
+              </form> <!-- end reminder form -->
             </div>
             <!-- /.box-footer -->
           </div>
@@ -82,44 +96,57 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- /.col -->
       </div>
       <!-- /.row -->
-      <div class="row">
+
         <div class="col-lg-9">
-          <?php  if($this->session->flashdata('add_comment')){?>
-          <div class="callout callout-success"><?php  echo $this->session->flashdata('add_comment');
-            $this->session->unset_userdata('add_comment');?> 
+          <?php  if($this->session->flashdata('comment')){?>
+          <div class="callout callout-success"><?php  echo $this->session->flashdata('comment');
+            $this->session->unset_userdata('comment');?> 
+          </div> 
+          <?php } ?>
+
+          <?php  if($this->session->flashdata('status')){?>
+          <div class="callout callout-success"><?php  echo $this->session->flashdata('status');
+            $this->session->unset_userdata('status');?> 
           </div> 
           <?php } ?>
         </div>
-      </div>
-  
-      <div class="row">
+
+
+      
+
         <!-- /.col -->
         <div class="col-lg-9">
-          <div class="box box-primary">
+        <?php foreach ($message_comments as $comment){ 
+            $count =1;
+          ?>   
+          <div class="box box-warning">
             <!-- show comments -->
               <div class="box-header with-border">
-                <h3 class="box-title">Comments</h3>
+                  <?php echo 'Commented by : '.$comment->username;?>
+                  <div class='pull-right mailbox-read-time'>
+                    <?php echo $comment->comment_date; ?>
+                    <?php echo $comment->comment_time; ?>
+                  </div>
               </div>
               <!-- /.box-header -->
+              
               <div class="box-body no-padding">
-                <div class="mailbox-read-info">
-                  <h4>Commented By :</h4>
-                </div>
-                <!-- /.mailbox-read-info -->
                 <div class="mailbox-read-message">
-
+                    <?php echo $comment->comment; ?>
                 </div>
                 <!-- /.mailbox-read-message -->
+                
+                <!-- /.mailbox-read-info -->
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="button" class="btn btn-default">Delete</button>
+                <a href="<?php echo base_url().'comments/delete/'.$comment->comment_id;?>"class="btn btn-danger" onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash-o"></i> Delete</a>
               </div>
           </div>
           <!-- /. box -->
         </div>
+        <?php }?>
         <!-- /.col -->
-      </div>
-      <!-- /.row -->
+
     </section>
 
     <section class="content">
@@ -137,7 +164,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <form action="<?php echo base_url();?>comments/add_comment/<?php echo $contact_message[0]['contact_id'] ?>" method="POST">
                 <!-- textarea -->
                 <div class="form-group">
-                  <textarea class="form-control" rows="3" placeholder="Add Comment" name="comment"></textarea>
+                  <textarea class="form-control" rows="3" placeholder="Add Comment" name="comment" required></textarea>
                 </div> 
                 <input type="hidden" class="form-control" name="date" id="date" value="<?php echo date("Y-m-d");?>" hidden>
                 <input type="hidden" class="form-control" name="time" id="time" value="<?php date_default_timezone_set("Asia/Colombo"); echo date("H:i:s");?>" hidden>
@@ -145,7 +172,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <!-- /.mailbox-read-message -->
             <!-- /.box-body -->
             <div class="box-footer">
-              <button type="submit" class="btn btn-default">Add Comment</button>
+              <button type="submit" class="btn btn-primary">Add Comment</button>
               </form>
             </div>
             <!-- /.box-footer -->

@@ -35,5 +35,12 @@ class Comments_model extends CI_Model {
         }
     }
 
+    public function get_comment_count($msg_id){
+        $this->db->where('comment_isdeleted !=', 1);
+        $this->db->where('message_id =', $msg_id);
+        $query = $this->db->get('comments');
+        return $query->result_array();
+    }
+
 
 }
