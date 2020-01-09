@@ -29,26 +29,6 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <div class="mailbox-controls">
-                <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
-                </button>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-               <!--   <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button> -->
-                </div>
-                <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                <div class="pull-right">
-                  <!--<div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                  </div>-->
-                  <!-- /.btn-group -->
-                </div>
-                <!-- /.pull-right -->
-              </div>
               <div class="table-responsive mailbox-messages no-padding">
                 <table id="example2" class="table table-hover table-striped">
                   <thead>

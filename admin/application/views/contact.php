@@ -35,30 +35,20 @@
               <!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <div class="mailbox-controls">
-                <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
-                </button>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-               <!--   <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button> -->
-                </div>
-                <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                <div class="pull-right">
-                  1-50/<?php echo count($contact_data);?>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                  </div>
-                  <!-- /.btn-group -->
-                </div>
-                <!-- /.pull-right -->
-              </div>
+            <div class="box-body">
               <div class="table-responsive mailbox-messages">
-                <table class="table table-hover table-striped">
+                <table id="example2" class="table table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Sender</th>
+                      <th>Status</th>
+                      <th>Subject</th>
+                      <th></th>
+                      <th>Date</th>
+                      <th>Comments</th>
+                    </tr>
+                  </thead>
                   <tbody>
                   <?php foreach ($contact_data as $val){?> 
                   <tr class="clickable-row" data-href="<?php echo'contact/message/'.$val['contact_id'];?>">
@@ -102,15 +92,6 @@
                 </div>
                 <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                <div class="pull-right">
-                  1-50/<?php echo count($contact_data);?>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                  </div>
-                  <!-- /.btn-group -->
-                </div>
-                <!-- /.pull-right -->
               </div>
             </div>
           </div>
