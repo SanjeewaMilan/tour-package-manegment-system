@@ -9,7 +9,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Contact data
+        Reservation data
         <small>Optional description</small>
       </h1>
       <ol class="breadcrumb">
@@ -25,17 +25,10 @@
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Inbox</h3>
-
-              <div class="box-tools pull-right">
-                <div class="has-feedback">
-                  <input type="text" class="form-control input-sm" placeholder="Search Mail">
-                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                </div>
-              </div>
               <!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
-            <div class="box-body no-padding">
+            <div class="box-body">
               <div class="mailbox-controls">
                 <!-- Check all button -->
                 <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
@@ -48,25 +41,36 @@
                 <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
                 <div class="pull-right">
-                  1-50/<?php echo count($contact_data);?>
-                  <div class="btn-group">
+                  <!--<div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                  </div>
+                  </div>-->
                   <!-- /.btn-group -->
                 </div>
                 <!-- /.pull-right -->
               </div>
-              <div class="table-responsive mailbox-messages">
-                <table class="table table-hover table-striped">
+              <div class="table-responsive mailbox-messages no-padding">
+                <table id="example2" class="table table-hover table-striped">
+                  <thead>
+                  <tr>
+                    <th></th>
+                    <th>No</th>
+                    <th>Status</th>
+                    <th>Sender</th>
+                    <th></th>
+                    <th>Date</th>
+                    <th>Comments</th>
+                  </tr>
+                  </thead>
                   <tbody>
-                  <?php foreach ($contact_data as $val){?> 
-                  <tr class="clickable-row" data-href="<?php echo'contact/message/'.$val['contact_id'];?>">
+                  <?php //var_dump($reservation_data);?>
+                  <?php foreach ($reservation_data as $val){?> 
+                  <tr class="clickable-row" data-href="<?php echo'reservation/message/'.$val['res_id'];?>">
                     <td><input type="checkbox"></td>
                     <!--<td class="mailbox-star"><a href=""><i class="fa fa-star text-yellow"></i></a></td>-->
-                    <td class="mailbox-name"><a href="<?php echo base_url().'contact/message/'.$val['contact_id'];?>"><?php echo $val['co_name']; ?></a></td>
+                    <td class="mailbox-name"><a href="<?php echo base_url().'reservation/message/'.$val['res_id'];?>"><?php echo 'Reservation 00'.$val['res_id']; ?></a></td>
                     <td><span class="badge <?php 
-                      $reminder_value = $val['co_reminder'] ;
+                      $reminder_value = $val['res_status'] ;
                     if( $reminder_value =='Pending'){
                       echo 'bg-red';
                     }elseif($reminder_value =='Completed'){
@@ -75,11 +79,11 @@
                       echo 'bg-blue';
                     }else{
                       echo 'bg-yellow';
-                    }?>"><?php echo $val['co_reminder']; ?></span></td>
-                    <td class="mailbox-subject"><b><?php echo $val['co_subject'].'</b> - '. substr($val['co_message'], 0, 80).'...'; ?>
+                    }?>"><?php echo $val['res_status']; ?></span></td>
+                    <td class="mailbox-subject"><b><?php echo $val['res_name']?> </b> - <?php echo $val['res_email']?>
                     </td>
-                    <td><span class="label label-success"><?php echo $val['co_status']; ?></span></td>
-                    <td class="mailbox-date"><?php echo $val['co_date']; ?></td>
+                    <td><span class="label label-success"><?php echo $val['res_auto_status']; ?></span></td>
+                    <td class="mailbox-date"><?php echo $val['res_date']; ?></td>
                     <td> <i class="fa fa-comments"></i><?php echo ' '.$val['comment_count'];?></td>
                   </tr>
                   <?php }?>
@@ -102,12 +106,12 @@
                 </div>
                 <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                <div class="pull-right">
-                  1-50/<?php echo count($contact_data);?>
+                <!--<div class="pull-right">
+                  1-50/<?php //echo count($reservation_data);?>
                   <div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                  </div>
+                  </div>-->
                   <!-- /.btn-group -->
                 </div>
                 <!-- /.pull-right -->
@@ -115,6 +119,7 @@
             </div>
           </div>
           <!-- /. box -->
+
         </div>
         <!-- /.col -->
       </div>

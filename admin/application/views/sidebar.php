@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+<!--   <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
@@ -51,14 +51,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
           </ul>
-        </li>
-        <li>
-          <a href="">
+        </li> -->
+        <li> 
+          <a href="<?php echo base_url();?>reservation">
             <i class="fa fa-envelope"></i> <span>Reservation</span>
-            <small class="label pull-right bg-yellow">12</small>
+            <small class="label pull-right bg-yellow"></small>
           </a>
         </li>
-        <li class="treeview">
+<!--        <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Customer Details</span>
             <i class="fa fa-angle-left pull-right"></i>
@@ -68,9 +68,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
             <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
           </ul>
-        </li>
+        </li> -->
 
-        <li><a href=""><i class="fa fa-book"></i> <span>Employee Data</span></a></li>
+        <li><a href="<?php echo base_url();?>contact"><i class="fa fa-book"></i> <span>Contact Data</span></a></li>
         <li class="header">LABELS</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
 
@@ -83,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url();?>/auth"><i class="fa fa-circle-o"></i> Dashbord</a></li>
             <li><a href="<?php echo base_url();?>/auth/create_user"><i class="fa fa-circle-o"></i> Create User</a></li>
-            <li><a href="<?php echo base_url();?>/auth/"><i class="fa fa-circle-o"></i> Login</a></li>
+            <li><a href="<?php echo base_url();?>/auth/change_password"><i class="fa fa-circle-o"></i> Change Password</a></li>
           </ul>
         </li>
       </ul>

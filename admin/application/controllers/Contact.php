@@ -24,7 +24,7 @@ class Contact extends CI_Controller {
     public function message($id){
 
         $data['contact_message'] =$this->contact_model->get_contact_message($id);
-        $data['message_comments'] =$this->comments_model->get_comment($id);
+        $data['message_comments'] =$this->comments_model->get_comment($id,'contact');
     
        $this->load->view('contact-message',$data);
        if($data['contact_message'][0]['co_status'] == 'NEW'){

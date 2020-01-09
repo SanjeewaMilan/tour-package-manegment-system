@@ -1,9 +1,6 @@
 <?php
 class Contact_model extends CI_Model {
 
-        
-
-
     public function save_contact($data){
         
         $this->db->set($data['co_data']);

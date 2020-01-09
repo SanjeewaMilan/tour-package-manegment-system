@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.2
+      <b>Version</b> x.x.x
     </div>
-    <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 20xx-20xx <a href=""></a>.</strong> All rights
     reserved.
   </footer>
 
@@ -13,11 +13,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 2.1.4 -->
-<script src="<?php echo base_url();?>assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>-->
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
+
+<script src="<?php echo base_url();?>assets/js/custom.js"></script>
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
@@ -40,15 +42,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url();?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="<?php echo base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!--data table-->
+<script src="<?php echo base_url();?>assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url();?>assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
 <!-- Slimscroll -->
 <script src="<?php echo base_url();?>assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url();?>assets/plugins/fastclick/fastclick.js"></script>
+
 <!-- AdminLTE App -->
 <script src="<?php echo base_url();?>assets/js/app.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?php echo base_url();?>assets/js/pages/dashboard.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) 
+<script src="<?php //echo base_url();?>assets/js/pages/dashboard.js"></script>-->
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url();?>assets/js/demo.js"></script>
+
+
+
+
+
+
 </body>
 </html>

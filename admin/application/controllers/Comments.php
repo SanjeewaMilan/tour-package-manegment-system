@@ -27,22 +27,33 @@ class Comments extends CI_Controller {
             'user_id' => $user->id,
             'comment' => $this->input->post('comment'),
             'comment_date' => $this->input->post('date'),
-            'comment_time' => $this->input->post('time')    
+            'comment_time' => $this->input->post('time'),
+            'comment_type' => $this->input->post('type')
         );
 
         $comment_save = $this->comments_model->save_comment($data);
         if($comment_save){
             $this->session->set_flashdata('comment', "Comment added!");
-			redirect('contact/message/'.$id);
+            redirect($_SERVER['HTTP_REFERER']);
+			//redirect('contact/message/'.$id);
         }else{
             $this->session->set_flashdata('comment', "Failed!");
-			redirect('contact/message/'.$id);
+            redirect($_SERVER['HTTP_REFERER']);
+			//redirect('contact/message/'.$id);
         }
 
     }
 
     public function delete($id){
-        $delete_function = $this->comments_model->delete_comment($id);
+        $user = $this->ion_auth->user()->row();
+        date_default_timezone_set("Asia/Colombo");
+        $data = array(
+            'comment_id' => $id,
+            'delete_user_id' => $user->id,
+            'delete_date' => date("Y-m-d"),
+            'delete_time' => date("H:i:s")
+        );
+        $delete_function = $this->comments_model->delete_comment($data);
         if($delete_function){
             $this->session->set_flashdata('comment', "Comment deleted!");
 			redirect($_SERVER['HTTP_REFERER']);
@@ -52,4 +63,24 @@ class Comments extends CI_Controller {
         }
 
     }    
+
+    public function update($id){
+        $user = $this->ion_auth->user()->row();
+        date_default_timezone_set("Asia/Colombo");
+        $data = array(
+            'comment_id' => $id,
+            'comment' => $this->input->post('input_comment'),
+            'comment_edit_user_id' => $user->id,
+            'comment_edit_date' => date("Y-m-d"),
+            'comment_edit_time' => date("H:i:s")
+        );
+        $update_query = $this->comments_model->update_comment($data);
+        if($update_query){
+            $this->session->set_flashdata('comment', "Comment edited!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }else{
+            $this->session->set_flashdata('comment', "Failed!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
 }

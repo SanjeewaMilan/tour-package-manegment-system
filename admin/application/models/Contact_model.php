@@ -10,7 +10,7 @@ class Contact_model extends CI_Model {
         
         foreach($result as $value){
             //$user_name = $this->ion_auth->user($value->user_id)->row(); 
-            $comments_data = $this->comments_model->get_comment_count($value['contact_id']);
+            $comments_data = $this->comments_model->get_comment_count($value['contact_id'],'contact');
             $comment_count = count($comments_data);
             $value['comment_count']=$comment_count;
             //array_push($value,$value['comment_count']=$comment_count);
